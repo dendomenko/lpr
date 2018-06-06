@@ -1,0 +1,43 @@
+version: '3'
+services:
+  lpr_db:
+    container_name: lpr_db
+    image: postgres:latest
+    ports:
+      - "5555:5555"
+  lpr_web:
+    container_name: lpr_web
+    build: .
+    command: sh start.sh
+    ports:
+      - "3000:3000"
+    depends_on:
+      - lpr_db
+      - lpr_redis
+      - lpr_elasticsearch
+    environment:
+      - ELASTICSEARCH_URL=http://lpr_elasticsearch:9200
+    volumes:
+      - .:/var/ruby/lpr
+#  lpr_sidekiq:
+#    container_name: lpr_sidekiq
+#    build: .
+#    volumes:
+#      - .:/var/ruby/lpr
+#    depends_on:
+#      - lpr_db
+#      - lpr_redis
+#      - lpr_elasticsearch
+#    environment:
+#      - ELASTICSEARCH_URL=http://lpr_elasticsearch:9200
+#    command: bundle exec sidekiq
+  lpr_redis:
+    container_name: lpr_redis
+    image: redis:latest
+    ports:
+      - "6379:6379"
+  lpr_elasticsearch:
+    container_name: lpr_elasticsearch
+    image: elasticsearch
+    ports:
+      - "9200:9200"
