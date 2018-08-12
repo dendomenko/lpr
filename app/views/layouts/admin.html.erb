@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lpr</title>
+    <%= javascript_pack_tag 'admin' %>
+  </head>
+
+  <body>
+  	<%= link_to('logout', destroy_user_session_path, method: :delete) %>
+    <%= yield %>
+  </body>
+
+</html>

@@ -1,7 +1,8 @@
 module Admin
   class BaseController < ActionController::Base
-    # include Pundit
-    # protect_from_forgery
+  	layout "admin"
+    include Pundit
+    protect_from_forgery
 
     before_action :authenticate_user!
     before_action :authorize_user!
@@ -12,8 +13,7 @@ module Admin
 
     def authorize_user!
       unless current_user&.admin?
-        raise Pundit::NotAuthorizedError,
-              "Must be logged in and must be an admin"
+        raise Pundit::NotAuthorizedError
       end
     end
 
@@ -25,14 +25,11 @@ module Admin
       super([:admin, scope])
     end
 
-    def filter_params
-      params.slice(:simple_search)
-    end
-
     private
 
     def user_not_authorized
-      redirect_to(request.referrer || [:root])
+      sign_out current_user if current_user
+      redirect_to(new_user_session_path)
     end
   end
 end
