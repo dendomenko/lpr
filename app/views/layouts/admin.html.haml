@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Lpr
+    = javascript_pack_tag 'admin'
+  %body
+    = render partial: 'application/admin_header'
+    = yield
