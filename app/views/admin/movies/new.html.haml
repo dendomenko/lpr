@@ -1,0 +1,11 @@
+= form_for([:admin, @movie]) do |f|
+  = f.label :title
+  = f.text_field :title
+
+  = f.label :description
+  = f.text_field :description
+  
+  = f.label :year
+  = f.date_field :year
+
+  = f.submit

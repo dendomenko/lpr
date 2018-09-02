@@ -4,6 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Lpr
     = javascript_pack_tag 'admin'
+    = stylesheet_link_tag  'admin', media: 'all', 'data-turbolinks-track': 'reload'
   %body
     = render partial: 'application/admin_header'
     = yield

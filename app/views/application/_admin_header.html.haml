@@ -1,3 +1,11 @@
-- if current_user
-  = button_to('logout', destroy_user_session_path, method: :delete)
+.header
+  - if flash[:notice]
+    .notice= flash[:notice]
+  - if flash[:error]
+    .error= flash[:error]
+    
+  - if current_user
+    = link_to "Dashboard", admin_root_path, class: "header-link"
+    = link_to "Movies", admin_movies_path, class: "header-link"
+    = button_to "logout", destroy_user_session_path, method: :delete, form_class: "header-link"
   
