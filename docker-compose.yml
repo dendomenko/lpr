@@ -40,6 +40,7 @@ services:
     container_name: lpr_elasticsearch
     image: elasticsearch
     environment:
+      - discovery.type=single-node
       - ES_JAVA_OPTS=-Xmx512m -Xms512m
     ports:
       - "9200:9200"

@@ -87,6 +87,10 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.4.11)
+      railties
+      sprockets-rails
+    graphql (1.8.10)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -241,6 +245,8 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  graphiql-rails
+  graphql
   haml-rails (~> 1.0)
   jbuilder (~> 2.5)
   jquery-rails
@@ -264,4 +270,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   1.16.3
+   1.16.4
